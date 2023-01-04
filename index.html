@@ -7,12 +7,44 @@
 </head>
 
 <body>
+    <header>
+        <h3 id="high-scores">View High Scores</h3>
+        <h3 class="timer" id="timer">Timer:</h3>
+    </header>
    <main>
-    <hi>The Comfortably Dumb Timed Quiz</hi>
-        <div>
-            <section><!--Put some classes or id's in here-->
-
+    <div class="start-container" id="start-quiz"></div>
+     <h1>The Office Quiz</h1>
+        <div class="questions-container" sty>
+            <p>Answer the questions about your favorite characters and antics from The Office. Correct answers gain you 5 points.<br> Incorrect answers will subtract 5 seconds from the timer. Good Luck! 🍀 </p>
+            <button class="button" id="start-button" type="button" onclick="startQuiz()">START THE QUIZ</button>
+            <section class="Questions" id="questions-container" style.visibility = "hidden">
+                <div class="Question1" id="question-1">What did Michael pretend to fire Pam over in Season 1?</div>
+                <label id="answers1">Answers:</label>
+                <select id="ans1">
+                    <option value=" ">-select an answer-</option>
+                    <option value="Stealing Post-it Notes">Stealing Post-it Notes</option>
+                    <option value="Not answering the phone">Not answering the phone</option>
+                    <option value="Wearing her glasses">Wearing her glasses</option>
+                </select>
+                <div class="Question2" id="question-2">What does Kevin suggest Dwight put in his gun holster?</div>
+                <label id="answers2">Answers:</label>
+                <select id="ans2">
+                    <option value=" ">-select an answer-</option>
+                    <option value="A cell phone">A cell phone</option>
+                    <option value="A banana">A banana</option>
+                    <option value="A toy gun">A toy gun</option>
+                </select>
+                <div class="Question3" id="question-3">What did Kevin buy for himself when he got himself for Secret Santa?</div>
+                <label id="answers3">Answers:</label>
+                <select id="ans3">
+                    <option value=" ">-select an answer-</option>       
+                    <option value="A foot massager">A foot massager</option>
+                    <option value="A foot bath">A banana</option>
+                    <option value="M&M's">M&M's</option>
+                </select>
             </section>
+
+        
         </div>
     </main>
 <script src="assets/js/script.js"></script>
