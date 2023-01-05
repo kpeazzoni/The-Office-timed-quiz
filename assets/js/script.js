@@ -11,11 +11,11 @@ var startButton = document.getElementById("start-button");
 
      // create a h2 element 
     // create question text in h2 element 
-    questionWrapper.removeChild(questionsDiv);
+    // questionWrapper.removeChild(questionsDiv);
 
     var questionText = document.createElement("h2");
     questionText.textContent = allQuestions[0].question;
-    myDiv.appendChild(questionText);
+    questionsDiv.appendChild(questionText);
       
     // create a for loop through the answers (a, b, c) that creates checkbox and label element for each
     // creating checkbox element
@@ -47,8 +47,8 @@ var startButton = document.getElementById("start-button");
         
     // appending the checkbox
     // and label to div
-    myDiv.appendChild(checkbox);
-    myDiv.appendChild(label);
+    questionsDiv.appendChild(checkbox);
+    questionsDiv.appendChild(label);
 }
 });
 
@@ -122,8 +122,8 @@ var startButton = document.getElementById("start-button");
 
     //  When all questions are answered display form to submit initials
     //  save form values score and initials to local STrorage
-    var endScore = localStorage.setItem()
-    var playerInitials = localStorage.setItem()
+    // var endScore = localStorage.setItem()
+    // var playerInitials = localStorage.setItem()
 
 //  change to highscores HTML
     //  read values from localstorage
