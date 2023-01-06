@@ -82,7 +82,7 @@ function saveScore() {
     var playerName = document.getElementById("initial-box").value;
     //localStorage.setItem(playerName, secondsLeft);
     var userList = localStorage.getItem("userList");
-    if (userList === undefined || userList === null) {
+    if (userList === undefined || userList === null) {  
         userList = {[playerName]: secondsLeft};
         localStorage.setItem("userList", JSON.stringify(userList));
     }
