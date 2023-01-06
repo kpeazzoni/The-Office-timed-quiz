@@ -1,7 +1,7 @@
 // window.onload = function () {
 // create a buttom- attribure "onclick = function created in js. in my fuction create console.log("button was clicked") to test code
 // when start button is clicked, it needs to reveal questions
-var secondsLeft = 60;
+var secondsLeft = 60    ;
 var questionsDiv = document.getElementById("questions-div");
 var questionWrapper = document.getElementById("questionWrapper");
 var questionIndex = 0;
@@ -10,6 +10,7 @@ var timerInterval;
 
 startButton.addEventListener("click", function() {
 document.getElementById("start-quiz").style.display = "none";
+// document.getElementById("timer").classList.remove("hidden");
 generateQuestions();
 setTime();
 });
@@ -39,6 +40,7 @@ function generateQuestions() {
         var choiceBtn = document.createElement("button");
         choiceBtn.textContent=allQuestions[questionIndex].answer[i];
         choiceBtn.setAttribute("value", allQuestions[questionIndex].answer[i]);
+        choiceBtn.className="answer-btn";
         choiceBtn.onclick = checkAnswers;
         document.getElementById("answer").append(choiceBtn);
     }
