@@ -8,21 +8,29 @@
 
 <body>
     <header>
-        <h3 id="high-scores">View High Scores</h3>
+        <h3 href="highscore.html" id="high-scores">View High Scores</h3>
         <h3 class="timer" id="timer">Timer:</h3>
     </header>
    <main>
     <div class="start-container" id="start-quiz">
      <h1>The Office Quiz</h1>
         <div class="questions-container" sty>
-            <p>Answer the questions about your favorite characters and antics from The Office. Correct answers gain you 5 points.<br> Incorrect answers will subtract 5 seconds from the timer. Good Luck! 🍀 </p>
+            <p>Answer the questions about your favorite characters and antics from The Office. Correct answers gain you 5 seconds on timer.<br> Incorrect answers will subtract 5 seconds from the timer. The winner will have the fastest time! Good Luck! 🍀 </p>
             <button class="button" id="start-button" type="button">START THE QUIZ</button>
         </div>    
         </div>
         <section>
             <div id="questionWrapper">
                <div id="questions-div"></div>
+               <div id="answer"></div>
             </div>
+        <div id="answer-message"></div>
+        <div id="final-score" class="hidden">
+            <p>Your score is: <span id="score"></span></p>
+            <p>Please enter your initals to record your final score:</p>
+            <input id="initial-box">
+            <button id="submit-btn">Submit</button>
+        </div>
         </section>
     </main>
 <script src="./assets/js/script.js"></script>

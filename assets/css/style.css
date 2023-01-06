@@ -37,7 +37,7 @@ p {
   font-family: 'Segoe UI','Open Sans', 'Helvetica Neue', sans-serif
 }
 
-button {
+#start-button {
   cursor:pointer;
   position:absolute;
   background-color: #233173;
@@ -53,6 +53,10 @@ button:hover{
   width: 200px;
   /* height: 100px; */
 }
+.hidden {
+  display:none;
+}
+
 h2 {
   font-size: 200%;
 }  
@@ -72,8 +76,8 @@ h3  {
 
 
   /* Matches the font of special elements to the rest of the page */
-  input, select, option, optgroup, textarea, button,
+  /* input, select, option, optgroup, textarea, button,
   pre, code {
     font-size: 100%;
     font-family: inherit;
-  }
+  } */
