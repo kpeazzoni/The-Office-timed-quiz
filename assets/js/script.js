@@ -1,7 +1,7 @@
 // window.onload = function () {
 // create a buttom- attribure "onclick = function created in js. in my fuction create console.log("button was clicked") to test code
 // when start button is clicked, it needs to reveal questions
-var highScores = 0;//end timer count
+var highScore = secondsLeft;//end timer count
 var questionsDiv = document.getElementById("questions-div");
 var questionWrapper = document.getElementById("questionWrapper");
 var questionIndex = 0;
@@ -9,12 +9,13 @@ var startButton = document.getElementById("start-button");
 
 startButton.addEventListener("click", function() {
 document.getElementById("start-quiz").style.display = "none";
-var timerCountdown = document.querySelector(".timer");
-var secondsLeft = 60;
-timerCountdown.textContent = secondsLeft
+
 generateQuestions();
 setTime();
 });
+var timerCountdown = document.querySelector(".timer");
+var secondsLeft = 60;
+timerCountdown.textContent = secondsLeft
 
 function setTime() {
     var timerInterval = setInterval(function() {
@@ -71,11 +72,75 @@ if (this.value === allQuestions[questionIndex].correctAnswer) {
 
 function endGame() {
     questionWrapper.style.display = "none";
-    document.getElementById("final-score").classList.remove("hidden");
+    document.getElementById("score").classList.remove("hidden");
     document.getElementById("score").textContent = secondsLeft;
     document.getElementById("submit-btn").onclick = saveScore // write this function
 };
-// savescore is going to grab the value of input and get to local storage
+
+function saveScore() {
+    highScore.localStorage.setItem.JSON.stringify(secondsLeft);
+}
+
+var allQuestions = [
+    {
+        question: "What did Michael pretend to fire Pam over in Season 1?",
+        answer: ["Stealing Post-it Notes", "Not answering the phone", "Wearing her glasses"],
+        questionId: 1,
+        correctAnswer: "Stealing Post-it Notes"    
+    },
+        
+    {
+        question: "What does Kevin suggest Dwight put in his gun holster?",
+        answer:["A cell phone", "A banana", "A toy gun"],
+        questionId: 2,
+        correctAnswer: "A banana"
+        },
+        
+    {
+        question: "What did Kevin buy for himself when he got himself for Secret Santa?",
+        answer: ["A foot massager", "A foot bath", "M&M's"],
+        questionId: 3,
+        correctAnswer: "A foot bath"
+        },
+        
+    {
+        question: "What's Stanley's morning 3 by 5?",
+        answer: ["Hot tea, 3 sugars, 5 creams", "Iced tea, 3 sugars, 5 creams", "Coffee, 3 sugars, 5 creams"],
+        questionId: 4,
+        correctAnswer: "Iced tea, 3 sugars, 5 creams"
+        },
+        
+    {
+        question: "What radio station stickers are seen around the office?",
+        answer: ["Froggy 901", "Dr. Ira Glass", "Froggy 101"],
+        questionId: 5,
+        correctAnswer: "Froggy 101"
+        },
+];
+
+    
+   
+        // Display question - loop
+        //  append question
+        // append choices array
+
+// user selects an answer(button,radio,checkboxes)data-answer = ""
+    //  click event is on the parent container
+    //  how to know which element was clicked(event.target)
+    // if the answer is correct display next question access array of questions object 
+    // if answer is incorrect subtract 10 seconds to score and display next question
+
+    //  When all questions are answered display form to submit initials
+    //  save form values score and initials to local STrorage
+    // var endScore = localStorage.setItem()
+    // var playerInitials = localStorage.setItem()
+
+//  change to highscores HTML
+    //  read values from localstorage
+    //  append score values to page
+
+
+    // savescore is going to grab the value of input and get to local storage
     // create a for loop through the answers (a, b, c) that creates checkbox and label element for each
     // creating checkbox element
     // var answers = allQuestions[0].answer;
@@ -143,60 +208,3 @@ function endGame() {
 // User is presented with 5 questions - array of objects
     //  Format for questions???
     // Object that conatins {question: string, Choices: array, answer: string}
-var allQuestions = [
-    {
-        question: "What did Michael pretend to fire Pam over in Season 1?",
-        answer: ["Stealing Post-it Notes", "Not answering the phone", "Wearing her glasses"],
-        questionId: 1,
-        correctAnswer: "Stealing Post-it Notes"    
-    },
-        
-    {
-        question: "What does Kevin suggest Dwight put in his gun holster?",
-        answer:["A cell phone", "A banana", "A toy gun"],
-        questionId: 2,
-        correctAnswer: "A banana"
-        },
-        
-    {
-        question: "What did Kevin buy for himself when he got himself for Secret Santa?",
-        answer: ["A foot massager", "A foot bath", "M&M's"],
-        questionId: 3,
-        correctAnswer: "b"
-        },
-        
-    {
-        question: "What's Stanley's morning 3 by 5?",
-        answer: ["Hot tea, 3 sugars, 5 creams", "Iced tea, 3 sugars, 5 creams", "Coffee, 3 sugars, 5 creams"],
-        questionId: 4,
-        correctAnswer: "Iced tea, 3 sugars, 5 creams"
-        },
-        
-    {
-        question: "What radio station stickers are seen around the office?",
-        answer: ["Froggy 901", "Dr. Ira Glass", "Froggy 101"],
-        questionId: 5,
-        correctAnswer: "Froggy 101"
-        },
-];
-
-    
-   
-        // Display question - loop
-        //  append question
-        // append choices array
-
-// user selects an answer(button,radio,checkboxes)data-answer = ""
-    //  click event is on the parent container
-    //  how to know which element was clicked(event.target)
-    // if the answer is correct display next question access array of questions object 
-    // if answer is incorrect subtract 10 seconds to score and display next question
-
-    //  When all questions are answered display form to submit initials
-    //  save form values score and initials to local STrorage
-    // var endScore = localStorage.setItem()
-    // var playerInitials = localStorage.setItem()
-
-//  change to highscores HTML
-    //  read values from localstorage
-    //  append score values to page
