@@ -1,31 +1,30 @@
 // window.onload = function () {
 // create a buttom- attribure "onclick = function created in js. in my fuction create console.log("button was clicked") to test code
 // when start button is clicked, it needs to reveal questions
-var highScore = secondsLeft;//end timer count
+var secondsLeft = 60;
 var questionsDiv = document.getElementById("questions-div");
 var questionWrapper = document.getElementById("questionWrapper");
 var questionIndex = 0;
 var startButton = document.getElementById("start-button");
+var timerInterval;
 
 startButton.addEventListener("click", function() {
 document.getElementById("start-quiz").style.display = "none";
-
 generateQuestions();
 setTime();
 });
 var timerCountdown = document.querySelector(".timer");
-var secondsLeft = 60;
 timerCountdown.textContent = secondsLeft
 
 function setTime() {
-    var timerInterval = setInterval(function() {
+    timerInterval = setInterval(function() {
         secondsLeft--;
         timerCountdown.textContent = "Timer:" + secondsLeft
         if(secondsLeft === 0) {
             // Stops execution of action at set interval
             clearInterval(timerInterval);
-                    // endGame(); //need to write this function
-    };
+            endGame();
+        };
     }, 1000);
 };
 
@@ -54,17 +53,17 @@ if (this.value === allQuestions[questionIndex].correctAnswer) {
     secondsLeft += 5;
     timerCountdown.textContent = "Timer:" + secondsLeft
 } else {
-    document.getElementById("answer-message").textContent = "Incorrect, minus 5 seconds from timer!";
-    secondsLeft -= 5;
+    document.getElementById("answer-message").textContent = "Incorrect, minus 10 seconds from timer!";
+    secondsLeft -= 10;
     timerCountdown.textContent = "Timer:" + secondsLeft
     if (secondsLeft <= 0) {
         secondsLeft = 0
-        //endGame();
+        endGame();
     }
 } 
     questionIndex++ 
     if (questionIndex === allQuestions.length) {
-        //endGame();
+        endGame();
     } else {
         generateQuestions();
     }
@@ -72,13 +71,30 @@ if (this.value === allQuestions[questionIndex].correctAnswer) {
 
 function endGame() {
     questionWrapper.style.display = "none";
-    document.getElementById("score").classList.remove("hidden");
+    document.getElementById("final-score").classList.remove("hidden");
+    document.getElementById("answer-message").style.display = "none";
     document.getElementById("score").textContent = secondsLeft;
-    document.getElementById("submit-btn").onclick = saveScore // write this function
+    clearTimeout(timerInterval);
+    document.getElementById("submit-btn").onclick = saveScore; 
 };
 
 function saveScore() {
-    highScore.localStorage.setItem.JSON.stringify(secondsLeft);
+    var playerName = document.getElementById("initial-box").value;
+    //localStorage.setItem(playerName, secondsLeft);
+    var userList = localStorage.getItem("userList");
+    if (userList === undefined || userList === null) {
+        userList = {[playerName]: secondsLeft};
+        localStorage.setItem("userList", JSON.stringify(userList));
+    }
+    else {
+        var userListJSON = JSON.parse(userList);
+        userListJSON[playerName] = secondsLeft;
+        localStorage.setItem("userList", JSON.stringify(userListJSON));
+    }
+    location.href = "./highscore.html";
+
+    // "user" : {"KP" : 34, "AP" : 40}
+
 }
 
 var allQuestions = [

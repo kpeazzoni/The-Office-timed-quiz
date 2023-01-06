@@ -1,2 +1,28 @@
-var endScore = localStorage.getItem()
-var playerInitials = localStorage.getItem()
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="./assets/css/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="./assets/css/style.css"/>
+    <title>Timed Quiz</title>
+</head>
+<body>
+    <header>
+    
+    </header>
+   <main>
+    <div class="start-container" id="start-quiz">
+     <h1>The Office Quiz</h1>
+    <section>
+        <div class="high-score-container"></div>
+        <center><button type ="button" id="submit-btn" value="Go back!" onclick="history.back()" >Back to Quiz</center></button>
+        
+        <script>
+            function myfunction2(){
+    //recall code
+            var userListJSON = JSON.parse(userList);
+            userListJSON[playerName] = secondsLeft;
+            document.getElementById('high-score-container').innerHTML = localStorage.getItem("userList", JSON.stringify(userListJSON)); 
+            };
+        </script>
+
+    </section>
