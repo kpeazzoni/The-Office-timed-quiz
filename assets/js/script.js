@@ -82,14 +82,15 @@ function endGame() {
 
 function saveScore() {
     var playerName = document.getElementById("initial-box").value;
-    //localStorage.setItem(playerName, secondsLeft);
     var userList = localStorage.getItem("userList");
+    
     if (userList === undefined || userList === null) {  
+        userList = [{name: playerName, score: secondsLeft}];
         localStorage.setItem("userList", JSON.stringify(userList));
     }
     else {
         var userListJSON = JSON.parse(userList);
-        userListJSON.push({name: playerName, score: secondsLeft});
+        userListJSON.push([{name: playerName, score: secondsLeft}]);
         localStorage.setItem("userList", JSON.stringify(userListJSON));
     }
     location.href = "./highscore.html";
