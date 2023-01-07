@@ -13,7 +13,8 @@ This week’s coursework will equip you with all the skills you need to succeed 
 ## Table of Contents
 
 - [Usage](#usage)
-- [Credits](#credits) - collaboration with study group
+- [Credits](#credits) - collaboration with study groups on multiple days
+
 - [License](#license)
 - [Mock-up](#mock-up)
 

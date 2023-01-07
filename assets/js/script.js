@@ -85,12 +85,11 @@ function saveScore() {
     //localStorage.setItem(playerName, secondsLeft);
     var userList = localStorage.getItem("userList");
     if (userList === undefined || userList === null) {  
-            
         localStorage.setItem("userList", JSON.stringify(userList));
     }
     else {
         var userListJSON = JSON.parse(userList);
-        userListJSON.push({name: playerName, score: secondsLeft});
+        userListJSON.setItem({name: playerName, score: secondsLeft});
         localStorage.setItem("userList", JSON.stringify(userListJSON));
     }
     location.href = "./highscore.html";
