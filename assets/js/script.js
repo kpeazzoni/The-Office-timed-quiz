@@ -85,7 +85,7 @@ function saveScore() {
     //localStorage.setItem(playerName, secondsLeft);
     var userList = localStorage.getItem("userList");
     if (userList === undefined || userList === null) {  
-        userList = [{name: playerName, score: secondsLeft}];
+            
         localStorage.setItem("userList", JSON.stringify(userList));
     }
     else {
