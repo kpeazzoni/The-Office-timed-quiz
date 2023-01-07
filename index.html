@@ -39,8 +39,10 @@
         <div id="final-score" class="hidden">
             <p>Your score is: <span id="score"></span></p>
             <p>Please enter your initals to record your final score:</p>
-            <input class="center-1" id="initial-box" type="text" value="">
-            <button class="center-2" id="submit-btn">Submit</button>
+            <form>
+                <input class="center-1" id="initial-box" minlength="3" maxlength="6" required type="text" placeholder ="initals" value=""/>
+                <input type="submit" class="center-2" id="submit-btn"/>
+            </form>
         </div>
         </section>
          <!-- <img src="assets/images/office2-e1596672214368 copy.png" alt="The Office logo" class="the-office-image"> -->

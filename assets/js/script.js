@@ -7,16 +7,15 @@ var questionWrapper = document.getElementById("questionWrapper");
 var questionIndex = 0;
 var startButton = document.getElementById("start-button");
 var timerInterval;
+var timerCountdown = document.querySelector(".timer");
+timerCountdown.textContent = secondsLeft;
 
 startButton.addEventListener("click", function() {
-document.getElementById("start-quiz").style.display = "none";
-// document.getElementById("timer").classList.remove("hidden");
-generateQuestions();
-setTime();
+    document.getElementById("start-quiz").style.display = "none";
+    generateQuestions();
+    setTime();
 });
-var timerCountdown = document.querySelector(".timer");
-timerCountdown.textContent = secondsLeft
-
+// timer function
 function setTime() {
     timerInterval = setInterval(function() {
         secondsLeft--;
@@ -29,7 +28,7 @@ function setTime() {
     }, 1000);
 };
 
-
+// question generator- for loop to run through the different questions in the object, creates a choice btn with answers on them.
 function generateQuestions() {
     var questionText = document.createElement("h2");
     questionsDiv.innerHTML= "";
@@ -44,25 +43,23 @@ function generateQuestions() {
         choiceBtn.onclick = checkAnswers;
         document.getElementById("answer").append(choiceBtn);
     }
-
-    console.log(allQuestions[0].question);
-    console.log(allQuestions[0].answer);
 };
 
+// validates anwers
 function checkAnswers() {
-if (this.value === allQuestions[questionIndex].correctAnswer) {
-    document.getElementById("answer-message").textContent = "Correct! 5 seconds added to timer!";
-    secondsLeft += 5;
-    timerCountdown.textContent = "Timer:" + secondsLeft
-} else {
-    document.getElementById("answer-message").textContent = "Incorrect, minus 10 seconds from timer!";
-    secondsLeft -= 10;
-    timerCountdown.textContent = "Timer:" + secondsLeft
-    if (secondsLeft <= 0) {
-        secondsLeft = 0
-        endGame();
-    }
-} 
+    if (this.value === allQuestions[questionIndex].correctAnswer) {
+        document.getElementById("answer-message").textContent = "Correct! 5 seconds added to timer!";
+        secondsLeft += 5;
+        timerCountdown.textContent = "Timer:" + secondsLeft
+    } else {
+        document.getElementById("answer-message").textContent = "Incorrect, minus 10 seconds from timer!";
+        secondsLeft -= 10;
+        timerCountdown.textContent = "Timer:" + secondsLeft
+        if (secondsLeft <= 0) {
+            secondsLeft = 0
+            endGame();
+        }
+    } 
     questionIndex++ 
     if (questionIndex === allQuestions.length) {
         endGame();
@@ -93,10 +90,7 @@ function saveScore() {
         userListJSON.push({name: playerName, score: secondsLeft});
         localStorage.setItem("userList", JSON.stringify(userListJSON));
     }
-    location.href = "./highscore.html";
-
-    // "user" : {"KP" : 34, "AP" : 40}
-
+    location.href = "./highscore.html"; // "user" : {"KP" : 34, "AP" : 40}
 }
 
 var allQuestions = [
@@ -129,10 +123,22 @@ var allQuestions = [
         },
         
     {
-        question: "What radio station stickers are seen around the office?",
-        answer: ["Froggy 901", "Dr. Ira Glass", "Froggy 101"],
+        question: "What radio statWhat's Pam's favorite flavor of yogurt?",
+        answer: ["Vanilla", "Strawberry", "Mixed Berry"],
         questionId: 5,
-        correctAnswer: "Froggy 101"
+        correctAnswer: "Mixed Berry"
+        },
+    {
+        question: "Dwight tells Jim's roommate that he keeps an extra pair of shoes in his car for special occasions. What kind of shoes are they?",
+        answer: ["Dress Shoes", "Birkenstocks", "Sandals"],
+        questionId: 5,
+        correctAnswer: "Birkenstocks"
+        },
+    {
+        question: "During the episode, Prince Family Paper, what's the secret signal that Dwight and Michael agree on using?",
+        answer: ["Raising your eyebrows", "Licking your lips", "Coughing loudly"],
+        questionId: 5,
+        correctAnswer: "Licking your lips"
         },
 ];
 
